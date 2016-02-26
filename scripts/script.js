@@ -85,8 +85,8 @@ function addCard(album){
 	  success: function(payload) {
 	  	var albumColor = tinycolor(payload.dominant);
 
-  		var html = '<article class="card_container">';
-  		html += '<div class="card" data-color="' + albumColor.toHsl().h + '">';
+  		var html = '<article class="card_container" data-color="' + albumColor.toHsl().h + '">';
+  		html += '<div class="card">';
 	    html += '<figure class="side"><img src="' + album.albumCover + '" alt="cover"></figure>';
 	    html += '<figcaption class="side back" style="background-color:' + payload.dominant + '">';
 	    html += '<h3 class="artist">' + album.albumArtist + '</h3>';
@@ -98,7 +98,7 @@ function addCard(album){
 		
 		$('.covers').append(html);
 
-		var $grid = $('.card').isotope({
+		var $grid = $('.card_container').isotope({
 		  getSortData: {
 		    color: '[data-color]'
 		  },
