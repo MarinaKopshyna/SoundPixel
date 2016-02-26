@@ -13,11 +13,12 @@ function getAlbumInfo(albumId){
 	.success(function(data){
 		var album = {};
 		album.albumArtist = data.artists[0].name,
+		album.artistId = data.artists[0].id,
 		album.albumName = data.name,
 		album.albumCover = data.images[1].url,
 		album.colorSample = data.images[2].url,
 		album.albumSample = data.tracks.items[0].preview_url;
-		
+		album.genres = getArtistInfo(album);
 		addCard(album);
 
 		// var albumColor = $('figcaption').css('background-color');
@@ -32,23 +33,25 @@ function getAlbumInfo(albumId){
 //AlbumInfo has album cover, artist, release date
 //AlbumID 7fZH0aUAjY3ay25obOUf2a
 
-function getArtistInfo(artistId){
+function getArtistInfo(album){
 	$.ajax({
-		url: 'http://developer.echonest.com/api/v4/artist/profile?id=spotify:artist:' + artistId,
+		url: 'http://developer.echonest.com/api/v4/artist/profile?id=spotify:artist:' + album.artistId,
 		data: {
 			api_key: 'EIFFMMDVJUME3MPUL',
-			bucket: 'genre',
-		}
+			bucket: 'genre'
+		},
 	})
 	.success(function(data){
-		console.log(data.response.artist);
+		// console.log('artistId: ' + album.artistId);
+		console.log(data.response.artist.genres);
+		return data.response.artist.genres;
 	})
 	.fail(function(){
 		console.log('whoops');
 	});
-};
+}
 //ArtistInfo has genre needed
-//ArtistID AR4ZYGI1187B995AA2
+//ArtistID 5l8VQNuIg0turYE1VtM9zV
 
 function getAlbumsByYear(year){
 	$.ajax({
@@ -64,7 +67,7 @@ function getAlbumsByYear(year){
 	.fail(function(){
 		console.log('whoops');
 	});
-};
+}
 //pulls 50 albums released every year
 
 function addAlbumCovers (albums) {
@@ -85,8 +88,8 @@ function addCard(album){
 	  success: function(payload) {
 	  	var albumColor = tinycolor(payload.dominant);
 	  	var hsl = albumColor.toHsl();
-	  	if (hsl.l < 0.5) {var c = '#ffffff';}
-	  	else {var c ='#272727';}
+	  	if (hsl.l < 0.5) {var c = '#ffffff'; var d = "play_b white"; var e = "play_b_white";}
+	  	else {var c ='#272727'; var d = "play_b dark"; var e = "play_b_dark";}
 
   		var html = '<article class="card_container">';
   		html += '<div class="card" data-color="' + hsl.h + '">';
@@ -94,8 +97,7 @@ function addCard(album){
 	    html += '<figcaption class="side back" style="background-color:' + payload.dominant + '">';
 	    html += '<h3 class="artist" style="color:' + c + '">' + album.albumArtist + '</h3>';
 	    html += '<h4 class="album" style="color:' + c + '">' + album.albumName + '</h4>';
-	    html += '<a href="' + album.albumSample + '""><img class="play_button" src="img/play_button.svg" alt="playb"></a>'
-	    //html += '<audio controls><source src="horse.ogg" type="audio/ogg"><source src="horse.mp3" type="audio/mpeg"></audio>';
+	    html += '<a href="' + album.albumSample + '""><img class="' + d + '" src="img/' + e + '.svg" alt="playb"></a>'
 	    html += '</figcaption></div></article>';
 
 		$('.covers').append(html);
