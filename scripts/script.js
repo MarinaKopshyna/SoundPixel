@@ -1,4 +1,4 @@
-      
+
 var colorsArray = [];      
 var currYear = 2016;
 
@@ -99,6 +99,7 @@ function addCard(album){
 		$('.covers').append(html);
 
 		var $grid = $('.card_container').isotope({
+			layoutMode: 'fitRows',
 		  getSortData: {
 		    color: '[data-color]'
 		  },
