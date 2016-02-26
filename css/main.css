@@ -169,44 +169,61 @@ p {
 /* line 186, main.scss */
 .card_container {
   float: left;
-  width: 25%;
+  width: 25vw;
+  height: 25vw;
   text-align: center;
+  perspective: 600;
   -webkit-perspective: 600;
-          perspective: 600;
+  -moz-perspective: 600;
+  -o-perspective: 600;
   position: relative; }
-  /* line 193, main.scss */
+  /* line 196, main.scss */
   .card_container:hover .card {
+    transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
-            transform: rotateY(180deg); }
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg); }
 
-/* line 198, main.scss */
+/* line 204, main.scss */
 .covers figure img {
   height: 100%;
   width: 100%; }
 
-/* line 208, main.scss */
+/* line 209, main.scss */
+figcaption {
+  background-color: #edd5d5; }
+
+/* line 214, main.scss */
 .card {
-  padding-bottom: 100%;
+  height: 100%;
   position: absolute;
+  -webkit-transition: all .5s ease-in-out;
+          transition: all .5s ease-in-out;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   -webkit-transition: all .5s ease-in-out;
-          transition: all .5s ease-in-out;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: all .5s ease-in-out;
+  -moz-transform-style: preserve-3d;
+  -o-transition: all .5s ease-in-out;
+  -o-transform-style: preserve-3d;
   width: 100%; }
-  /* line 215, main.scss */
+  /* line 226, main.scss */
   .card .side {
+    backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
     height: 100%;
     position: absolute;
+    top: 0;
     width: 100%; }
-  /* line 221, main.scss */
+  /* line 236, main.scss */
   .card .back {
-    height: 100%;
     -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg); }
 
-/* line 227, main.scss */
+/* line 241, main.scss */
 .play_button {
   position: absolute;
   top: 55%;
@@ -215,13 +232,13 @@ p {
   -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%); }
 
-/* line 237, main.scss */
+/* line 251, main.scss */
 .artist, .album {
   max-width: 90%;
   margin: auto;
   color: #272727; }
 
-/* line 244, main.scss */
+/* line 258, main.scss */
 .artist {
   font-family: "Sofia Pro", sans-serif;
   font-weight: bolder;
@@ -229,7 +246,7 @@ p {
   padding-top: 16%
   /*50px*/ }
 
-/* line 252, main.scss */
+/* line 266, main.scss */
 .album {
   font-family: "Baskerville", serif;
   font-weight: lighter;
@@ -238,7 +255,7 @@ p {
   /*15px*/ }
 
 /*--------footer---------*/
-/* line 261, main.scss */
+/* line 275, main.scss */
 footer {
   width: 75vw;
   margin: 30px auto;
@@ -246,80 +263,82 @@ footer {
   color: #fff;
   font-weight: lighter;
   font-size: 10px; }
-  /* line 268, main.scss */
+  /* line 282, main.scss */
   footer small {
     float: left; }
-  /* line 271, main.scss */
+  /* line 285, main.scss */
   footer ul {
     float: right; }
-    /* line 273, main.scss */
+    /* line 287, main.scss */
     footer ul li {
       display: inline-block; }
-      /* line 275, main.scss */
+      /* line 289, main.scss */
       footer ul li:first-child {
         padding-right: 20px; }
 
 /*--------media queries---------*/
 @media (max-width: 768px) {
-  /* line 287, main.scss */
-  .covers article {
-    width: 33.3%; }
+  /* line 301, main.scss */
+  .card_container {
+    width: 33.3vw;
+    height: 33.3vw; }
 
-  /* line 291, main.scss */
+  /* line 306, main.scss */
   .arist, .album {
     max-width: 98%;
     line-height: 1.1; }
 
-  /* line 296, main.scss */
+  /* line 311, main.scss */
   .artist {
     font-size: 14px; }
 
-  /* line 300, main.scss */
+  /* line 315, main.scss */
   .album {
     font-size: 18px; }
 
-  /* line 304, main.scss */
+  /* line 319, main.scss */
   footer {
     width: 85vw;
     text-align: center; }
-    /* line 307, main.scss */
+    /* line 322, main.scss */
     footer small {
       float: none; }
-    /* line 310, main.scss */
+    /* line 325, main.scss */
     footer ul {
       padding: 15px 0;
       float: none; } }
 @media (max-width: 420px) {
-  /* line 319, main.scss */
+  /* line 334, main.scss */
   header {
     padding-top: 15%; }
 
-  /* line 323, main.scss */
+  /* line 338, main.scss */
   .header_underline {
     margin: 40px 35vw 100px; }
 
-  /* line 327, main.scss */
-  .covers article {
-    width: 50%; }
+  /* line 342, main.scss */
+  .card_container {
+    width: 50vw;
+    height: 50vw; }
 
-  /* line 331, main.scss */
+  /* line 347, main.scss */
   .artist {
     font-size: 12px; }
 
-  /* line 335, main.scss */
+  /* line 351, main.scss */
   .album {
     font-size: 16px; }
 
-  /* line 339, main.scss */
+  /* line 355, main.scss */
   .play_button {
     width: 20%;
     top: 75%; }
 
-  /* line 344, main.scss */
+  /* line 360, main.scss */
   .years {
     width: 80vw; }
 
-  /* line 348, main.scss */
+  /* line 364, main.scss */
   .left_arrow, .right_arrow {
     display: none; } }
 
