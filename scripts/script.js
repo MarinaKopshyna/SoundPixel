@@ -17,7 +17,7 @@ function getAlbumInfo(albumId){
 		album.albumCover = data.images[1].url,
 		album.colorSample = data.images[2].url,
 		album.albumSample = data.tracks.items[0].preview_url;
-
+		
 		addCard(album);
 
 		// var albumColor = $('figcaption').css('background-color');
@@ -68,14 +68,13 @@ function getAlbumsByYear(year){
 //pulls 50 albums released every year
 
 function addAlbumCovers (albums) {
-	// console.log(albums.length);
 	var numAlbums = albums.length;
 	var albumArtist;
-	for(var i=0; i < numAlbums; i++){
 
+	for (i = 0; i < numAlbums; i++){
+		if (albums[i].album_type === 'single') { continue; }
 		var albumID = albums[i].id;
 		getAlbumInfo(albumID);
-		
 	}
 }
 
@@ -84,19 +83,19 @@ function addCard(album){
 	  paletteSize: 3,
 
 	  success: function(payload) {
-
 	  	var albumColor = tinycolor(payload.dominant);
+
   		var html = '<article class="card_container">';
   		html += '<div class="card" data-color="' + albumColor.toHsl().h + '">';
 	    html += '<figure class="side"><img src="' + album.albumCover + '" alt="cover"></figure>';
 	    html += '<figcaption class="side back" style="background-color:' + payload.dominant + '">';
 	    html += '<h3 class="artist">' + album.albumArtist + '</h3>';
 	    html += '<h4 class="album">' + album.albumName + '</h4>';
-	    html += '<h3 class="hexcolor">#' + tinycolor(payload.dominant).toHex() + '</h3>';
-	    html += '<a href="' + album.albumSample + '""><h3>Listen to Sample</h3></a>'
-	    //html += '<img class="play_button" src="img/play_button.svg" alt="playb">';
+	    // html += '<h3 class="hexcolor">#' + tinycolor(payload.dominant).toHex() + '</h3>';
+	    html += '<a href="' + album.albumSample + '""><img class="play_button" src="img/play_button.svg" alt="playb"></a>'
 	    //html += '<audio controls><source src="horse.ogg" type="audio/ogg"><source src="horse.mp3" type="audio/mpeg"></audio>';
 	    html += '</figcaption></div></article>';
+		
 		$('.covers').append(html);
 
 		var $grid = $('.card').isotope({
