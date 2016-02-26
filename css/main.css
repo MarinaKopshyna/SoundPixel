@@ -205,7 +205,6 @@ figcaption {
   .card .side {
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-    height: 100%;
     position: absolute;
     width: 100%; }
   /* line 222, main.scss */
