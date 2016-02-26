@@ -185,8 +185,8 @@ p {
 
   .card_container{
   float: left;
-  width: 25vw;
-  height: 25vw;
+  width: 25%;
+  height: 25vw !important;
   text-align: center;
   perspective: 600;
   -webkit-perspective: 600;
@@ -238,7 +238,7 @@ figcaption {
      }
 }
 
-.play_button {
+.play_b {
   position: absolute;
   top: 55%;
   left: 50%;
@@ -299,8 +299,8 @@ footer {
 @media(max-width: 768px) {
 
   .card_container {
-    width: 33.3vw;
-    height: 33.3vw;
+    width: 33.3%;
+    height: 33.3vw !important;
   }
 
   .arist, .album {
@@ -340,8 +340,8 @@ footer {
   }
 
   .card_container {
-    width: 50vw;
-    height: 50vw;
+    width: 50%;
+    height: 50vw !important;
   }
 
   .artist {
