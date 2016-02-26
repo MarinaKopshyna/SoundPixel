@@ -1,4 +1,4 @@
-      
+
 var colorsArray = [];      
 var currYear = 2016;
 
@@ -72,7 +72,7 @@ function addAlbumCovers (albums) {
 	var albumArtist;
 
 	for (i = 0; i < numAlbums; i++){
-		if (albums[i].album_type === 'single') { continue; }
+		//if (albums[i].album_type === 'single') { continue; }
 		var albumID = albums[i].id;
 		getAlbumInfo(albumID);
 	}
@@ -84,38 +84,34 @@ function addCard(album){
 
 	  success: function(payload) {
 	  	var albumColor = tinycolor(payload.dominant);
+	  	var hsl = albumColor.toHsl();
+	  	if (hsl.l < 0.5) {var c = '#ffffff';}
+	  	else {var c ='#272727';}
 
   		var html = '<article class="card_container">';
-  		html += '<div class="card" data-color="' + albumColor.toHsl().h + '">';
+  		html += '<div class="card" data-color="' + hsl.h + '">';
 	    html += '<figure class="side"><img src="' + album.albumCover + '" alt="cover"></figure>';
 	    html += '<figcaption class="side back" style="background-color:' + payload.dominant + '">';
-	    html += '<h3 class="artist">' + album.albumArtist + '</h3>';
-	    html += '<h4 class="album">' + album.albumName + '</h4>';
-	    // html += '<h3 class="hexcolor">#' + tinycolor(payload.dominant).toHex() + '</h3>';
+	    html += '<h3 class="artist" style="color:' + c + '">' + album.albumArtist + '</h3>';
+	    html += '<h4 class="album" style="color:' + c + '">' + album.albumName + '</h4>';
 	    html += '<a href="' + album.albumSample + '""><img class="play_button" src="img/play_button.svg" alt="playb"></a>'
 	    //html += '<audio controls><source src="horse.ogg" type="audio/ogg"><source src="horse.mp3" type="audio/mpeg"></audio>';
 	    html += '</figcaption></div></article>';
-		
+
 		$('.covers').append(html);
 
-		var $grid = $('.card').isotope({
-		  getSortData: {
-		    color: '[data-color]'
-		  },
-		  // sort by color then number
-		  sortBy: [ 'color']
+		var $grid = $('.card_container').isotope({
+			layoutMode: 'fitRows',
+			getSortData: {
+				color: '[data-color]'
+			},
+			// sort by color then number
+			sortBy: [ 'color']
 		});
-
 		// colorsArray.push(albumColor.toHsl());
 	  }
 	});
-    //sort colors
 }
-
-      
-
-//getAlbumsByYear(2015)
-
 
 $(".right_arrow").click(function(){
 	var goalX = $(".years").scrollLeft() + 205;
@@ -161,7 +157,7 @@ $('.years').scroll(function(e){
 		$('.left_arrow').css("visibility", "hidden");
 	}
 	else if(e.target.scrollLeft == e.target.scrollWidth - $('.years').width()){
-		$('.right_arrow').css("visibility", "hidden");
+		$('.right_a rrow').css("visibility", "hidden");
 	}
 });
 
