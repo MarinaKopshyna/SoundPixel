@@ -1,0 +1,335 @@
+/* VARIABLES */
+/*D7793E*/
+/* line 12, main.scss */
+* {
+  box-sizing: border-box; }
+
+/* line 17, main.scss */
+.clearfix::after {
+  clear: both; }
+/* line 18, main.scss */
+.clearfix::after, .clearfix::before {
+  display: table;
+  content: ""; }
+
+/* line 24, main.scss */
+body {
+  background-color: #32292d;
+  line-height: 1.5; }
+
+/* line 29, main.scss */
+a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bolder; }
+
+/*-------------header----------*/
+/* line 38, main.scss */
+.bck {
+  background: url(../img/bck.png) no-repeat;
+  background-size: cover;
+  height: 70vh; }
+
+/* line 44, main.scss */
+header {
+  text-align: center;
+  padding-top: 7%
+  /*115px*/ }
+
+/* line 49, main.scss */
+h1 {
+  font-family: "Playfair Display", serif;
+  color: #edd5d5;
+  font-weight: 400;
+  font-size: 36px; }
+
+/* line 56, main.scss */
+.header_underline {
+  border-bottom: 3px solid #edd5d5;
+  margin: 30px 47vw 90px; }
+
+/* line 61, main.scss */
+p {
+  font-family: "Baskerville", serif;
+  font-weight: lighter;
+  color: #fff;
+  font-size: 14px; }
+
+/*-----------------year nav-------------*/
+/* line 70, main.scss */
+.year_bar {
+  /*position: relative;*/
+  color: #fff;
+  font-family: "Sofia Pro", sans-serif;
+  font-weight: lighter; }
+  /* line 75, main.scss */
+  .year_bar img {
+    cursor: pointer; }
+  /* line 78, main.scss */
+  .year_bar li {
+    display: inline-block;
+    vertical-align: middle; }
+
+/* line 84, main.scss */
+.years {
+  /*position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  clip: rect(0px,400px,15px,0px);*/
+  /*width: 35vw;
+  height: 15px;
+  overflow: hidden;*/
+  width: 32vw;
+  padding: 15px 0;
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll; }
+  /* line 101, main.scss */
+  .years li {
+    display: inline;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    cursor: pointer; }
+    /* line 106, main.scss */
+    .years li.active {
+      border-color: #fff; }
+  /* line 110, main.scss */
+  .years::-webkit-scrollbar {
+    display: none; }
+
+/* line 115, main.scss */
+.left_arrow {
+  margin-right: 40px; }
+  /* line 117, main.scss */
+  .left_arrow:hover {
+    width: 30%; }
+
+/* line 122, main.scss */
+.right_arrow {
+  margin-left: 40px; }
+  /* line 124, main.scss */
+  .right_arrow:hover {
+    width: 30%; }
+
+/*---------spinner-------*/
+/* line 132, main.scss */
+.spinner {
+  z-index: 99999;
+  position: fixed;
+  visibility: hidden;
+  top: 55%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); }
+
+/*----------genres----------*/
+/* line 147, main.scss */
+.genres {
+  width: 75vw;
+  margin: 60px auto;
+  text-align: justify; }
+  /* line 151, main.scss */
+  .genres:after {
+    content: '';
+    width: 100%;
+    display: inline-block; }
+
+/* line 158, main.scss */
+.genres article {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  width: 24%;
+  margin: 0.7% auto;
+  padding: 10px 0;
+  background-color: #553354; }
+  /* line 166, main.scss */
+  .genres article:hover, .genres article.active_genre:hover {
+    background-color: #96344C; }
+  /* line 169, main.scss */
+  .genres article.active_genre {
+    background-color: #CC6643; }
+  /* line 172, main.scss */
+  .genres article h2 {
+    font-family: "Sofia Pro", sans-serif;
+    font-weight: lighter;
+    color: #fff;
+    font-size: 24px; }
+  /* line 178, main.scss */
+  .genres article .genre_underline {
+    border-bottom: 1px solid #fff;
+    margin: 4px 40% 20px; }
+
+/*-----------covers------------*/
+/* line 186, main.scss */
+.covers article {
+  float: left;
+  width: 25%;
+  padding-bottom: 25%;
+  text-align: center; }
+  /* line 191, main.scss */
+  .covers article:hover .card {
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg); }
+
+/* line 196, main.scss */
+.covers figure img {
+  height: 100%;
+  width: 100%; }
+
+/* line 201, main.scss */
+figcaption {
+  background-color: #edd5d5; }
+
+/* line 205, main.scss */
+.card_container {
+  -webkit-perspective: 600;
+          perspective: 600;
+  position: relative; }
+
+/* line 210, main.scss */
+.card {
+  height: 100%;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all .5s ease-in-out;
+          transition: all .5s ease-in-out;
+  width: 100%; }
+  /* line 216, main.scss */
+  .card .side {
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    height: 100%;
+    position: absolute;
+    width: 100%; }
+  /* line 222, main.scss */
+  .card .back {
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg); }
+
+/* line 227, main.scss */
+.play_button {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); }
+
+/* line 237, main.scss */
+.artist, .album {
+  max-width: 90%;
+  margin: auto;
+  color: #272727; }
+
+/* line 244, main.scss */
+.artist {
+  font-family: "Sofia Pro", sans-serif;
+  font-weight: bolder;
+  font-size: 16px;
+  padding-top: 16%
+  /*50px*/ }
+
+/* line 252, main.scss */
+.album {
+  font-family: "Baskerville", serif;
+  font-weight: lighter;
+  font-size: 21px;
+  padding-top: 4%
+  /*15px*/ }
+
+/*--------footer---------*/
+/* line 261, main.scss */
+footer {
+  width: 75vw;
+  margin: 30px auto;
+  font-family: "Sofia Pro", sans-serif;
+  color: #fff;
+  font-weight: lighter;
+  font-size: 10px; }
+  /* line 268, main.scss */
+  footer small {
+    float: left; }
+  /* line 271, main.scss */
+  footer ul {
+    float: right; }
+    /* line 273, main.scss */
+    footer ul li {
+      display: inline-block; }
+      /* line 275, main.scss */
+      footer ul li:first-child {
+        padding-right: 20px; }
+
+/*--------media queries---------*/
+@media (max-width: 768px) {
+  /* line 287, main.scss */
+  .covers article {
+    width: 33.3%;
+    padding-bottom: 33.3%; }
+
+  /* line 292, main.scss */
+  .arist, .album {
+    max-width: 98%;
+    line-height: 1.1; }
+
+  /* line 297, main.scss */
+  .artist {
+    font-size: 14px; }
+
+  /* line 301, main.scss */
+  .album {
+    font-size: 18px; }
+
+  /* line 305, main.scss */
+  footer {
+    width: 85vw;
+    text-align: center; }
+    /* line 308, main.scss */
+    footer small {
+      float: none; }
+    /* line 311, main.scss */
+    footer ul {
+      padding: 15px 0;
+      float: none; } }
+@media (max-width: 420px) {
+  /* line 320, main.scss */
+  header {
+    padding-top: 15%; }
+
+  /* line 324, main.scss */
+  .header_underline {
+    margin: 40px 35vw 100px; }
+
+  /* line 328, main.scss */
+  .covers article {
+    width: 50%;
+    padding-bottom: 50%; }
+
+  /* line 333, main.scss */
+  .artist {
+    font-size: 12px; }
+
+  /* line 337, main.scss */
+  .album {
+    font-size: 16px; }
+
+  /* line 341, main.scss */
+  .play_button {
+    width: 20%;
+    top: 75%; }
+
+  /* line 346, main.scss */
+  .years {
+    width: 80vw; }
+
+  /* line 350, main.scss */
+  .left_arrow, .right_arrow {
+    display: none; } }
+
+/*# sourceMappingURL=main.css.map */
