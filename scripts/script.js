@@ -17,9 +17,6 @@ function getAlbumInfo(albumId){
 		album.albumCover = data.images[1].url,
 		album.colorSample = data.images[2].url,
 		album.albumSample = data.tracks.items[0].preview_url;
-		// console.log(albumCover);
-		// console.log(albumName);
-		// console.log(albumArtist);
 
 		addCard(album);
 
