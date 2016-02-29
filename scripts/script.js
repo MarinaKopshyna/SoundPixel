@@ -1,5 +1,5 @@
 
-var colorsArray = [];      
+var albumGenres = [];      
 var currYear = 2016;
 
       audiojs.events.ready(function() {
@@ -17,8 +17,9 @@ function getAlbumInfo(albumId){
 		album.albumName = data.name,
 		album.albumCover = data.images[1].url,
 		album.colorSample = data.images[2].url,
-		album.albumSample = data.tracks.items[0].preview_url;
+		album.albumSample = data.tracks.items[0].preview_url,
 		album.genres = getArtistInfo(album);
+
 		addCard(album);
 
 		// var albumColor = $('figcaption').css('background-color');
@@ -42,9 +43,11 @@ function getArtistInfo(album){
 		},
 	})
 	.success(function(data){
-		// console.log('artistId: ' + album.artistId);
-		console.log(data.response.artist.genres);
-		return data.response.artist.genres;
+		var artistGenres = data.response.artist.genres
+		// console.log(artistGenres.length);
+		for (i = 0; i < artistGenres.length; i++) {
+			albumGenres.push(artistGenres[i].name);
+		}
 	})
 	.fail(function(){
 		console.log('whoops');
@@ -79,6 +82,7 @@ function addAlbumCovers (albums) {
 		var albumID = albums[i].id;
 		getAlbumInfo(albumID);
 	}
+
 }
 
 function addCard(album){
@@ -113,6 +117,31 @@ function addCard(album){
 		// colorsArray.push(albumColor.toHsl());
 	  }
 	});
+}
+
+function sortGenres(){
+	albumGenres.sort();
+	for (i = 1; i < albumGenres.length; i++) {
+		var genre = albumGenres[i];
+		var numGenre = albumGenres.lastIndexOf(genre) - albumGenres.indexOf(genre) + 1;
+		console.log(genre + ' = ' + numGenre);
+		// if (albumGenres[i] = albumGenres[i-1]) {
+		// 	var genre = albumGenres[i];
+		// 	console.log(genre + ' = ' + albumGenres.lastIndexOf(genre) - albumGenres.indexOf(genre) + 1);
+		// } else {
+		// 	console.log(albumGenres[i] + ': 1');
+		// }
+		var genreHtml = '<article class="active_genre">';
+		genreHtml += '<h2>' + genre.toUpperCase() + '</h2>';
+		genreHtml += '<div class="genre_underline"></div>';
+		genreHtml += '<p>' + numGenre + ' Albums</p>';
+		if (albumGenres[i] != albumGenres[i-1]) {
+			$('.genres').append(genreHtml);
+		}
+
+		
+	}
+	
 }
 
 $(".right_arrow").click(function(){
