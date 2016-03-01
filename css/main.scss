@@ -8,6 +8,7 @@ $dark: #272727;
 $orange: #CC6643; /*D7793E*/
 $purple: #553354;
 $pink: #96344C;
+$mint: #AAF0D1;
 
 *{
 	box-sizing: border-box;
@@ -43,7 +44,7 @@ a {
 
 header {
   text-align: center;
-  padding-top: 7%; /*115px*/
+  padding-top: 9vh; /*115px*/
 }
 
 h1 {
@@ -55,7 +56,7 @@ h1 {
 
 .header_underline {
   border-bottom: 3px solid $pale;
-  margin: 30px 47vw 90px;
+  margin: 3vh 47vw 6vh;
 }
 
 p {
@@ -94,35 +95,36 @@ p {
   height: 15px;
   overflow: hidden;*/
   width: 32vw;
-  padding: 15px 0;
+  padding: 10% 0;
   white-space: nowrap;
+  overflow: -moz-scrollbars-none !important;
   overflow-y: hidden;
   overflow-x: scroll;
     & li {
       display: inline;
       padding: 10px 20px;
-      border: 1px solid transparent;
+      // border: 1px solid transparent;
       cursor: pointer;
-        &.active {
-          border-color: $white;
+        &.active, &:hover {
+          color: $mint;
         }
     }
     &::-webkit-scrollbar { 
-     display: none; 
-    }
+     display: none;
+     } 
 }
 
 .left_arrow {
   margin-right: 40px;
      &:hover {
-       width: 30%;
+       width: 12px;
      }
 }
 
 .right_arrow {
   margin-left: 40px;
      &:hover {
-       width: 30%;
+       width: 12px;
      }
 }
 
@@ -132,7 +134,7 @@ p {
 .spinner {
    z-index: 99999;
    position: fixed;
-   visibility: hidden;
+   // visibility: hidden;
    top: 55%;
    left: 50%;
    -webkit-transform: translate(-50%, -50%);
@@ -144,49 +146,101 @@ p {
 
 /*----------genres----------*/
 
-.genres {
-  width: 75vw;
-  margin: 60px auto;
-  text-align: justify;
-    &:after {
-      content: '';
-      width: 100%; 
-      display: inline-block;
-     }
-}
+// .genres {
+//   width: 75vw;
+//   margin: 3% auto 5%;
+//   // text-align: justify;
+//   //   &:after {
+//   //     content: '';
+//   //     width: 100%; 
+//   //     display: inline-block;
+//   //    }
+// }
 
-.genres article {
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  width: 24%;
-  margin: 0.7% auto;
-  padding: 10px 0;
-  background-color: $purple;
-    &:hover, &.active_genre:hover {
-      background-color: $pink;
-    }
-     &.active_genre {
-      background-color: $orange;
-     }
-     & h2 {
-      font-family: $sofi;
-      font-weight: lighter;
-      color: $white;
-      font-size: 24px;
-     }
-     & .genre_underline {
-      border-bottom: 1px solid $white;
-      margin: 4px 40% 20px;
-     }
-}
+// .genres article {
+//   position: relative;
+//   cursor: pointer;
+//   // vertical-align: top;
+//   float: left;
+//   text-align: center;
+//   // vertical-align: middle;
+//   width: 19%;
+//   height: 50px;
+//   margin: 0.5%;
+//   padding: 0.3%;
+//   background-color: $purple;
+//     &:hover, &.active_genre:hover {
+//       background-color: $pink;
+//     }
+//      &.active_genre {
+//       background-color: $orange;
+//      }
+//      & h2 {
+//       font-family: $sofi;
+//       font-weight: lighter;
+//       color: $white;
+//       font-size: 12px;
+//       // line-height: 50px;
+//      }
+//       & p {
+//       font-size: 12px;
+//       line-height: 50px;
+//       position: absolute;
+//       top: 50%;
+//       left: 50%;
+//       -webkit-transform: translate(-50%, -50%);
+//       -moz-transform: translate(-50%, -50%);
+//       -o-transform: translate(-50%, -50%);
+//       transform: translate(-50%, -50%);
+//       z-index: 999;
+//       background-color: $pink;
+//       width: 100%;
+//       height: 100%;
+//       opacity: 0;
+//          &:hover {
+//           opacity: 1;
+//          }
+//      }
+// }
+
+/*-----------sort by-----------*/
+
+.sortby{
+     width: 25vw;
+     margin: 2% auto 5%;
+     text-align: center;
+      & h2 {
+           font-family: $sofi;
+           color: $white;
+           font-size: 14px;
+           padding-bottom: 15px;
+        }
+      & div {
+      display: -webkit-flex;
+      -webkit-flex-direction: row;
+      display: flex;
+      flex-direction: row;
+        & a {
+          font-family: $sofi;
+          font-weight: lighter;
+          font-size: 16px;
+          cursor: pointer;
+          -webkit-flex: 1 1 auto;
+          flex: 1 1 auto;
+            &.active, &:hover {
+              color: $mint;
+            }
+        }
+      }
+} 
+
 
 /*-----------covers------------*/
 
   .card_container{
   float: left;
   width: 25%;
-  height: 25vw !important;
+  height: 25vw;
   text-align: center;
   perspective: 600;
   -webkit-perspective: 600;
@@ -240,7 +294,7 @@ figcaption {
 
 .play_b {
   position: absolute;
-  top: 55%;
+  top: 60%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -249,11 +303,10 @@ figcaption {
 }
 
 .artist, .album {
-  max-width: 90%;
+  max-width: 85%;
   margin: auto;
   color: $dark;
 }
-
 
 .artist {
   font-family: $sofi;
@@ -295,25 +348,72 @@ footer {
 
 /*--------media queries---------*/
 
-
-@media(max-width: 768px) {
-
-  .card_container {
-    width: 33.3%;
-    height: 33.3vw !important;
+@media(max-width: 1300px){
+  .card {
+    line-height: 1.4;
   }
+  .artist, .album {
+  max-width: 90%;
+  } 
+}
 
-  .arist, .album {
-     max-width: 98%;
-     line-height: 1.1;
+@media(max-width: 1200px) {
+  .card { 
+    line-height: 1.3;
   }
+  .album {
+    font-size: 20px;
+  }
+  .play_b {
+    top: 65%;
+    width: 35px;
+  }
+}
 
+@media(max-width: 1020px) {
+  .play_b {
+    top: 70%;
+  }
+}
+
+@media(max-width: 920px) {
+  header {
+    padding-top: 5%;
+  }
+  .play_b {
+    top: 70%;
+  }
   .artist {
     font-size: 14px;
   }
 
   .album {
     font-size: 18px;
+  }
+}
+
+@media(max-width: 768px) {
+
+.genres article {
+    &:hover {
+      background-color: $orange;
+    }
+    &.active_genre:hover{
+      background-color: $purple;
+    }
+}
+
+.years {
+    width: 45vw;
+  }
+
+  .card_container {
+    width: 33.3%;
+    height: 33.3vw;
+  }
+
+  .arist, .album {
+     max-width: 95%;
   }
 
   footer {
@@ -329,21 +429,11 @@ footer {
   }
 }
 
-@media(max-width: 420px) {
-
-  header {
-    padding-top: 15%;
+@media(max-width: 600px){
+  .play_b {
+    top: 75%;
+    width: 30px;
   }
-
-  .header_underline {
-  margin: 40px 35vw 100px;
-  }
-
-  .card_container {
-    width: 50%;
-    height: 50vw !important;
-  }
-
   .artist {
     font-size: 12px;
   }
@@ -353,17 +443,37 @@ footer {
   }
 
   .play_button {
-    width: 20%;
+    width: 25px;
     top: 75%;
   }
+}
 
-  .years {
-    width: 80vw;
+@media(max-width: 500px) {
+   .years {
+    width: 60vw;
+  }
+}
+
+@media(max-width: 420px) {
+
+  h1 {
+    font-size: 30px;
   }
 
-  .left_arrow, .right_arrow {
-    display: none;
+  .header_underline {
+  margin-left: 40vw;
+  margin-right: 40vw;
   }
+
+  .card_container {
+    width: 50%;
+    height: 50vw;
+  }
+
+  // .left_arrow, .right_arrow {
+  //   display: none;
+  // }
+
 }
 
 

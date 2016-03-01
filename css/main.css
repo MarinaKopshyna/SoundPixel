@@ -1,54 +1,54 @@
 /* VARIABLES */
 /*D7793E*/
-/* line 12, main.scss */
+/* line 13, main.scss */
 * {
   box-sizing: border-box; }
 
-/* line 17, main.scss */
+/* line 18, main.scss */
 .clearfix::after {
   clear: both; }
-/* line 18, main.scss */
+/* line 19, main.scss */
 .clearfix::after, .clearfix::before {
   display: table;
   content: ""; }
 
-/* line 24, main.scss */
+/* line 25, main.scss */
 body {
   background-color: #32292d;
   line-height: 1.5; }
 
-/* line 29, main.scss */
+/* line 30, main.scss */
 a {
   text-decoration: none;
   color: #fff;
   font-weight: bolder; }
 
 /*-------------header----------*/
-/* line 38, main.scss */
+/* line 39, main.scss */
 .bck {
   background: url(../img/bck.png) no-repeat;
   background-size: cover;
   height: 70vh; }
 
-/* line 44, main.scss */
+/* line 45, main.scss */
 header {
   text-align: center;
-  padding-top: 7%
+  padding-top: 9vh
   /*115px*/ }
 
-/* line 49, main.scss */
+/* line 50, main.scss */
 h1 {
   font-family: "Playfair Display", serif;
   color: #edd5d5;
   font-weight: 400;
   font-size: 36px; }
 
-/* line 56, main.scss */
+/* line 57, main.scss */
 .header_underline {
   border-bottom: 3px solid #edd5d5;
-  margin: 30px 47vw 90px; }
+  margin: 3vh 47vw 6vh; }
 
-/* line 61, main.scss */
+/* line 62, main.scss */
 p {
   font-family: "Baskerville", serif;
   font-weight: lighter;
@@ -56,21 +56,21 @@ p {
   font-size: 14px; }
 
 /*-----------------year nav-------------*/
-/* line 70, main.scss */
+/* line 71, main.scss */
 .year_bar {
   /*position: relative;*/
   color: #fff;
   font-family: "Sofia Pro", sans-serif;
   font-weight: lighter; }
-  /* line 75, main.scss */
+  /* line 76, main.scss */
   .year_bar img {
     cursor: pointer; }
-  /* line 78, main.scss */
+  /* line 79, main.scss */
   .year_bar li {
     display: inline-block;
     vertical-align: middle; }
 
-/* line 84, main.scss */
+/* line 85, main.scss */
 .years {
   /*position: absolute;
   top: 0;
@@ -84,43 +84,42 @@ p {
   height: 15px;
   overflow: hidden;*/
   width: 32vw;
-  padding: 15px 0;
+  padding: 10% 0;
   white-space: nowrap;
+  overflow: -moz-scrollbars-none !important;
   overflow-y: hidden;
   overflow-x: scroll; }
-  /* line 101, main.scss */
+  /* line 103, main.scss */
   .years li {
     display: inline;
     padding: 10px 20px;
-    border: 1px solid transparent;
     cursor: pointer; }
-    /* line 106, main.scss */
-    .years li.active {
-      border-color: #fff; }
-  /* line 110, main.scss */
+    /* line 108, main.scss */
+    .years li.active, .years li:hover {
+      color: #AAF0D1; }
+  /* line 112, main.scss */
   .years::-webkit-scrollbar {
     display: none; }
 
-/* line 115, main.scss */
+/* line 117, main.scss */
 .left_arrow {
   margin-right: 40px; }
-  /* line 117, main.scss */
+  /* line 119, main.scss */
   .left_arrow:hover {
-    width: 30%; }
+    width: 12px; }
 
-/* line 122, main.scss */
+/* line 124, main.scss */
 .right_arrow {
   margin-left: 40px; }
-  /* line 124, main.scss */
+  /* line 126, main.scss */
   .right_arrow:hover {
-    width: 30%; }
+    width: 12px; }
 
 /*---------spinner-------*/
-/* line 132, main.scss */
+/* line 134, main.scss */
 .spinner {
   z-index: 99999;
   position: fixed;
-  visibility: hidden;
   top: 55%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -128,72 +127,73 @@ p {
       transform: translate(-50%, -50%); }
 
 /*----------genres----------*/
-/* line 147, main.scss */
-.genres {
-  width: 75vw;
-  margin: 60px auto;
-  text-align: justify; }
-  /* line 151, main.scss */
-  .genres:after {
-    content: '';
-    width: 100%;
-    display: inline-block; }
-
-/* line 158, main.scss */
-.genres article {
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  width: 24%;
-  margin: 0.7% auto;
-  padding: 10px 0;
-  background-color: #553354; }
-  /* line 166, main.scss */
-  .genres article:hover, .genres article.active_genre:hover {
-    background-color: #96344C; }
-  /* line 169, main.scss */
-  .genres article.active_genre {
-    background-color: #CC6643; }
-  /* line 172, main.scss */
-  .genres article h2 {
+/*-----------sort by-----------*/
+/* line 208, main.scss */
+.sortby {
+  width: 25vw;
+  margin: 2% auto 5%;
+  text-align: center; }
+  /* line 212, main.scss */
+  .sortby h2 {
     font-family: "Sofia Pro", sans-serif;
-    font-weight: lighter;
     color: #fff;
-    font-size: 24px; }
-  /* line 178, main.scss */
-  .genres article .genre_underline {
-    border-bottom: 1px solid #fff;
-    margin: 4px 40% 20px; }
+    font-size: 14px;
+    padding-bottom: 15px; }
+  /* line 218, main.scss */
+  .sortby div {
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row; }
+    /* line 223, main.scss */
+    .sortby div a {
+      font-family: "Sofia Pro", sans-serif;
+      font-weight: lighter;
+      font-size: 16px;
+      cursor: pointer;
+      -webkit-flex: 1 1 auto;
+      -webkit-box-flex: 1;
+          -ms-flex: 1 1 auto;
+              flex: 1 1 auto; }
+      /* line 230, main.scss */
+      .sortby div a.active, .sortby div a:hover {
+        color: #AAF0D1; }
 
 /*-----------covers------------*/
-/* line 186, main.scss */
+/* line 240, main.scss */
 .card_container {
   float: left;
   width: 25%;
-  height: 25vw !important;
+  height: 25vw;
   text-align: center;
   perspective: 600;
   -webkit-perspective: 600;
   -moz-perspective: 600;
   -o-perspective: 600;
   position: relative; }
-  /* line 196, main.scss */
+  /* line 250, main.scss */
   .card_container:hover .card {
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
     -o-transform: rotateY(180deg); }
 
-/* line 204, main.scss */
+/* line 258, main.scss */
 .covers figure img {
   height: 100%;
   width: 100%; }
 
-/* line 209, main.scss */
+/* line 263, main.scss */
 figcaption {
   background-color: #edd5d5; }
 
-/* line 214, main.scss */
+/* line 268, main.scss */
 .card {
   height: 100%;
   position: absolute;
@@ -208,7 +208,7 @@ figcaption {
   -o-transition: all .5s ease-in-out;
   -o-transform-style: preserve-3d;
   width: 100%; }
-  /* line 226, main.scss */
+  /* line 280, main.scss */
   .card .side {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -218,27 +218,27 @@ figcaption {
     position: absolute;
     top: 0;
     width: 100%; }
-  /* line 236, main.scss */
+  /* line 290, main.scss */
   .card .back {
     -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg); }
 
-/* line 241, main.scss */
+/* line 295, main.scss */
 .play_b {
   position: absolute;
-  top: 55%;
+  top: 60%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%); }
 
-/* line 251, main.scss */
+/* line 305, main.scss */
 .artist, .album {
-  max-width: 90%;
+  max-width: 85%;
   margin: auto;
   color: #272727; }
 
-/* line 258, main.scss */
+/* line 311, main.scss */
 .artist {
   font-family: "Sofia Pro", sans-serif;
   font-weight: bolder;
@@ -246,7 +246,7 @@ figcaption {
   padding-top: 16%
   /*50px*/ }
 
-/* line 266, main.scss */
+/* line 319, main.scss */
 .album {
   font-family: "Baskerville", serif;
   font-weight: lighter;
@@ -255,7 +255,7 @@ figcaption {
   /*15px*/ }
 
 /*--------footer---------*/
-/* line 275, main.scss */
+/* line 328, main.scss */
 footer {
   width: 75vw;
   margin: 30px auto;
@@ -263,83 +263,128 @@ footer {
   color: #fff;
   font-weight: lighter;
   font-size: 10px; }
-  /* line 282, main.scss */
+  /* line 335, main.scss */
   footer small {
     float: left; }
-  /* line 285, main.scss */
+  /* line 338, main.scss */
   footer ul {
     float: right; }
-    /* line 287, main.scss */
+    /* line 340, main.scss */
     footer ul li {
       display: inline-block; }
-      /* line 289, main.scss */
+      /* line 342, main.scss */
       footer ul li:first-child {
         padding-right: 20px; }
 
 /*--------media queries---------*/
-@media (max-width: 768px) {
-  /* line 301, main.scss */
-  .card_container {
-    width: 33.3%;
-    height: 33.3vw !important; }
+@media (max-width: 1300px) {
+  /* line 352, main.scss */
+  .card {
+    line-height: 1.4; }
 
-  /* line 306, main.scss */
-  .arist, .album {
-    max-width: 98%;
-    line-height: 1.1; }
+  /* line 355, main.scss */
+  .artist, .album {
+    max-width: 90%; } }
+@media (max-width: 1200px) {
+  /* line 361, main.scss */
+  .card {
+    line-height: 1.3; }
 
-  /* line 311, main.scss */
+  /* line 364, main.scss */
+  .album {
+    font-size: 20px; }
+
+  /* line 367, main.scss */
+  .play_b {
+    top: 65%;
+    width: 35px; } }
+@media (max-width: 1020px) {
+  /* line 374, main.scss */
+  .play_b {
+    top: 70%; } }
+@media (max-width: 920px) {
+  /* line 380, main.scss */
+  header {
+    padding-top: 5%; }
+
+  /* line 383, main.scss */
+  .play_b {
+    top: 70%; }
+
+  /* line 386, main.scss */
   .artist {
     font-size: 14px; }
 
-  /* line 315, main.scss */
+  /* line 390, main.scss */
   .album {
-    font-size: 18px; }
+    font-size: 18px; } }
+@media (max-width: 768px) {
+  /* line 398, main.scss */
+  .genres article:hover {
+    background-color: #CC6643; }
+  /* line 401, main.scss */
+  .genres article.active_genre:hover {
+    background-color: #553354; }
 
-  /* line 319, main.scss */
+  /* line 406, main.scss */
+  .years {
+    width: 45vw; }
+
+  /* line 410, main.scss */
+  .card_container {
+    width: 33.3%;
+    height: 33.3vw; }
+
+  /* line 415, main.scss */
+  .arist, .album {
+    max-width: 95%; }
+
+  /* line 419, main.scss */
   footer {
     width: 85vw;
     text-align: center; }
-    /* line 322, main.scss */
+    /* line 422, main.scss */
     footer small {
       float: none; }
-    /* line 325, main.scss */
+    /* line 425, main.scss */
     footer ul {
       padding: 15px 0;
       float: none; } }
-@media (max-width: 420px) {
-  /* line 334, main.scss */
-  header {
-    padding-top: 15%; }
+@media (max-width: 600px) {
+  /* line 433, main.scss */
+  .play_b {
+    top: 75%;
+    width: 30px; }
 
-  /* line 338, main.scss */
-  .header_underline {
-    margin: 40px 35vw 100px; }
-
-  /* line 342, main.scss */
-  .card_container {
-    width: 50%;
-    height: 50vw !important; }
-
-  /* line 347, main.scss */
+  /* line 437, main.scss */
   .artist {
     font-size: 12px; }
 
-  /* line 351, main.scss */
+  /* line 441, main.scss */
   .album {
     font-size: 16px; }
 
-  /* line 355, main.scss */
+  /* line 445, main.scss */
   .play_button {
-    width: 20%;
-    top: 75%; }
-
-  /* line 360, main.scss */
+    width: 25px;
+    top: 75%; } }
+@media (max-width: 500px) {
+  /* line 452, main.scss */
   .years {
-    width: 80vw; }
+    width: 60vw; } }
+@media (max-width: 420px) {
+  /* line 459, main.scss */
+  h1 {
+    font-size: 30px; }
 
-  /* line 364, main.scss */
-  .left_arrow, .right_arrow {
-    display: none; } }
+  /* line 463, main.scss */
+  .header_underline {
+    margin-left: 40vw;
+    margin-right: 40vw; }
+
+  /* line 468, main.scss */
+  .card_container {
+    width: 50%;
+    height: 50vw; } }
 
 /*# sourceMappingURL=main.css.map */
