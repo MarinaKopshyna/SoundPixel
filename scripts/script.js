@@ -34,29 +34,29 @@ function getAlbumsByYear(year){
 
 }
 
-function getMoreAlbumsByYear(year){
-	$.ajax({
-		url: 'https://api.spotify.com/v1/search?q=year:' + year + '&type=album&limit=' + TOTAL_ALBUMS + '&market=us&offset=50'
-	})
-	.success(function(data){
-		getAlbumInfo(data.albums.items);
-	})
-	.fail(function(){
-		console.log('whoops');
-	});
-}
+// function getMoreAlbumsByYear(year){
+// 	$.ajax({
+// 		url: 'https://api.spotify.com/v1/search?q=year:' + year + '&type=album&limit=' + TOTAL_ALBUMS + '&market=us&offset=50'
+// 	})
+// 	.success(function(data){
+// 		getAlbumInfo(data.albums.items);
+// 	})
+// 	.fail(function(){
+// 		console.log('whoops');
+// 	});
+// }
 //pulls 50 albums released every year and gives array to addAlbumCovers
 
-function addAlbumCovers (albums) {
-	// var numAlbums = albums.length;
-	var albumArtist;
+// function addAlbumCovers (albums) {
+// 	// var numAlbums = albums.length;
+// 	var albumArtist;
 
-	for (i = 0; i < TOTAL_ALBLUMS; i++){
-		// if (albums[i].album_type === 'single') { continue; }
-		var albumID = albums[i].id;
-		albumIDs.push(albumID);
-	}
-}
+// 	for (i = 0; i < TOTAL_ALBLUMS; i++){
+// 		// if (albums[i].album_type === 'single') { continue; }
+// 		var albumID = albums[i].id;
+// 		albumIDs.push(albumID);
+// 	}
+// }
 // pulls albumID from array of 50 albums. passes ID to getAlbumInfo
 // 		// var album = {};
 // 		// album.albumArtist = data.artists[0].name,
@@ -65,6 +65,7 @@ function addAlbumCovers (albums) {
 // 		// album.albumCover = data.images[1].url,
 // 		// album.colorSample = data.images[2].url,
 // 		// album.albumSample = data.tracks.items[0].preview_url;
+
 function getAlbumInfo( albumsArray ){
 
 	console.log("getAlbumInfo called");
@@ -115,7 +116,7 @@ function getAlbumInfo( albumsArray ){
 
 						albumCounter++;
 
-						if (albumCounter >= TOTAL_ALBUMS*2) {
+						if (albumCounter >= TOTAL_ALBUMS) {
 							console.log("WE ARE DONE!!!");
 							addAlbumCovers();
 						}
