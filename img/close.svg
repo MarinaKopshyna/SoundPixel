@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop-Landscape" sketch:type="MSArtboardGroup" transform="translate(-1062.000000, -349.000000)" stroke-linecap="square" stroke="#EDD5D5">
+            <g id="Group-3" sketch:type="MSLayerGroup" transform="translate(1062.000000, 349.000000)">
+                <path d="M0.5,0.5 L7.17083216,7.17083216" id="Line" sketch:type="MSShapeGroup"></path>
+                <path d="M0.5,0.5 L7.17083216,7.17083216" id="Line" sketch:type="MSShapeGroup" transform="translate(4.000000, 4.000000) rotate(90.000000) translate(-4.000000, -4.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>
