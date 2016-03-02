@@ -1,5 +1,3 @@
-
-var albumGenres = [];      
 var currYear = 2016;
 var albumInfo = [];
 var albumIDs = [];
@@ -9,6 +7,7 @@ var albumColorArray = [];
 var albumArray = [];
 var albumCounter = 0;
 var noDupeArray = [];
+var albumGenresArray = [];
 var $grid;
 
 const TOTAL_ALBUMS = 50;
@@ -101,12 +100,11 @@ function getAlbumInfo( albumsArray ){
 			albumObj.albumArtist = data.artists[0].name;
 			albumObj.albumCover = data.images[1].url;
 			albumObj.colorSample = data.images[2].url;
+			albumObj.albumSample = data.tracks.items[0].preview_url;
 
 			var artistId = data.artists[0].id;
 
 			albumObj.ID = artistId;
-
-
 
 			$.ajax({
 				url: 'http://developer.echonest.com/api/v4/artist/profile?id=spotify:artist:' + artistId,
@@ -183,6 +181,7 @@ function addAlbumCovers(){
 
 	var max = noDupeArray.length;
 
+
 	for (var i = 0; i < max; i++){
 		// console.log(noDupeArray[i].ID);
 		
@@ -204,8 +203,20 @@ function addAlbumCovers(){
 	  	if (hsl.l < 0.5) {var c = '#ffffff'; var d = "play_b white"; var e = "play_b_white";}
 	  	else {var c ='#272727'; var d = "play_b dark"; var e = "play_b_dark";}
 
+	  	var albumGenres = noDupeArray[i].genres;
+		// console.log(albumGenres);
+		var albumGenresStr = '';
+		// var htmlAlbumGenresStr = '';
+	  	albumGenres.forEach(function(genre, j, arr){
+	  		genre.name = genre.name.replace(' ', '-');
+	  		albumGenresArray.push(genre.name)
+	  		albumGenresStr += genre.name + ' ';
+	  	});
+	  	
+
   		var html = '<div class="card_container" data-color="' + dec + '"';
-  		html +=  'data-artist="' + album.albumArtist+ '"';
+  		html += 'data-genres="' + albumGenresStr + '"';
+  		html += 'data-artist="' + album.albumArtist + '"';
   		html += 'data-album="' + album.albumName + '">';
   		html += '<div class="card">';
 	    html += '<figure class="side"><img src="' + album.albumCover + '" alt="cover"></figure>';
@@ -215,8 +226,16 @@ function addAlbumCovers(){
 	    html += '<a href="' + album.albumSample + '""><img class="' + d + '" src="img/' + e + '.svg" alt="playb"></a>'
 	    html += '</figcaption></div></div>';
 
+		// var numGenres = noDupeArray[i].genres.length;
+		// for (var j = 0; j < numGenres; j++){
+		// 	var genre = numGenres.genres[j].name
+		// 	return ;
+		// }
+	
 		$('.covers').append(html);
-	}
+
+		// $('.card_container').attr('data-genres', noDupeArray[i].genres);
+
 	if($grid){$grid.isotope('destroy');}	
 	$grid = $('.covers').isotope({
 		itemSelector: '.card_container',
@@ -226,8 +245,15 @@ function addAlbumCovers(){
 			artist: '[data-artist]',
 			album: '[data-album]'
 		}
+		// filter: 'data-genres'
 	});
 	$grid.isotope({ sortBy: "color" });
+
+	// $grid.isotope({
+	// 	filter: function(){
+	// 		var genre = $(this).find('.card_container').
+	// 	}
+	// })
 
 	$('.button').on( 'click', function(e) {
 		e.preventDefault();
@@ -237,23 +263,26 @@ function addAlbumCovers(){
 	  	console.log("sortByValue: " + sortByValue);
 		$grid.isotope({ sortBy: sortByValue });
 	});
+	}
 }
 
+$(".sortby a").click(function(){
+    $(".sortby a.active").removeClass("active");
+   $(this).addClass("active");
+});
 
 function sortGenres(){
-	albumGenres.sort();
-	for (i = 1; i < albumGenres.length; i++) {
-		var genre = albumGenres[i];
-		var numGenre = albumGenres.lastIndexOf(genre) - albumGenres.indexOf(genre) + 1;
+	albumGenresArray.sort();
+	for (i = 1; i < albumGenresArray.length; i++) {
+		var genre = albumGenresArray[i];
+		var numGenre = albumGenresArray.lastIndexOf(genre) - albumGenresArray.indexOf(genre) + 1;
 		console.log(genre + ' = ' + numGenre);
 
-		var genreHtml = '<article>';
-		genreHtml += '<h2>' + genre.toUpperCase() + '</h2>';
-		genreHtml += '<div class="genre_underline"></div>';
-		genreHtml += '<p>' + numGenre + ' Albums</p>';
-		if (albumGenres[i] != albumGenres[i-1]) {
-			$('.genres').append(genreHtml);
-		}	
+		var genreHtml = '<li class="active">' + genre.toUpperCase() + '"';
+		genreHtml += '<span class="number"> (' + numGenre + ')</span></li>';
+		if (albumGenresArray[i] != albumGenresArray[i-1]) {
+			$('.genres ul').append(genreHtml);
+		}
 	}
 }
 
@@ -276,7 +305,7 @@ $(".years li").click(function(){
 	if($(this).text() !== $('.years li.active').text()){
 	    $(".years li.active").removeClass("active");
 	    $(this).addClass("active");
-	    var year = $('.active').text();
+	    var year = $('.years li.active').text();
 	    
 	    $('.covers').html('');
 
@@ -291,11 +320,6 @@ $(".years li").click(function(){
 
 $(".genres article").click(function(){
     $(this).toggleClass("active_genre");
-});
-
-$(".sortby a").click(function(){
-    $(".sortby a.active").removeClass("active");
-   $(this).addClass("active");
 });
 
 $(document).ready(function(){
@@ -321,8 +345,27 @@ $(window).ready(function() {
     $(".spinner").fadeOut("slow");
 });
 
+$(".fa-caret-down").click(function() {
+	$(this).css("display", "none");
+	$(".fa-caret-up").css("display", "inline");
+	$(".genres ul").slideDown( "slow", function() {
+    	$(".genres ul").css("display", "block");
+ 	});
+});
+
+$(".fa-caret-up").click(function() {
+	$(this).css("display", "none");
+	$(".fa-caret-down").css("display", "inline");
+	$(".genres ul").slideUp( "slow", function() {
+		$(".genres ul").css("display", "none");
+	});
+});
 
 
+$(".sortby div a").click(function(){
+    var i = $(this).data('index');
+    $('.underl').css('left', (i * 33 + "%"));
+});
 
 
 
