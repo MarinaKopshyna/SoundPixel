@@ -1,54 +1,54 @@
 /* VARIABLES */
 /*D7793E*/
-/* line 13, main.scss */
+/* line 12, main.scss */
 * {
   box-sizing: border-box; }
 
-/* line 18, main.scss */
+/* line 17, main.scss */
 .clearfix::after {
   clear: both; }
-/* line 19, main.scss */
+/* line 18, main.scss */
 .clearfix::after, .clearfix::before {
   display: table;
   content: ""; }
 
-/* line 25, main.scss */
+/* line 24, main.scss */
 body {
   background-color: #32292d;
   line-height: 1.5; }
 
-/* line 30, main.scss */
+/* line 29, main.scss */
 a {
   text-decoration: none;
   color: #fff;
   font-weight: bolder; }
 
 /*-------------header----------*/
-/* line 39, main.scss */
+/* line 38, main.scss */
 .bck {
   background: url(../img/bck.png) no-repeat;
   background-size: cover;
   height: 70vh; }
 
-/* line 45, main.scss */
+/* line 44, main.scss */
 header {
   text-align: center;
   padding-top: 9vh
   /*115px*/ }
 
-/* line 50, main.scss */
+/* line 49, main.scss */
 h1 {
   font-family: "Playfair Display", serif;
   color: #edd5d5;
   font-weight: 400;
   font-size: 36px; }
 
-/* line 57, main.scss */
+/* line 56, main.scss */
 .header_underline {
   border-bottom: 3px solid #edd5d5;
   margin: 3vh 47vw 6vh; }
 
-/* line 62, main.scss */
+/* line 61, main.scss */
 p {
   font-family: "Baskerville", serif;
   font-weight: lighter;
@@ -56,21 +56,26 @@ p {
   font-size: 14px; }
 
 /*-----------------year nav-------------*/
-/* line 71, main.scss */
+/* line 70, main.scss */
 .year_bar {
   /*position: relative;*/
   color: #fff;
   font-family: "Sofia Pro", sans-serif;
   font-weight: lighter; }
-  /* line 76, main.scss */
+  /* line 75, main.scss */
   .year_bar img {
     cursor: pointer; }
-  /* line 79, main.scss */
+  /* line 78, main.scss */
   .year_bar li {
     display: inline-block;
     vertical-align: middle; }
 
-/* line 85, main.scss */
+/* line 84, main.scss */
+.wraper {
+  height: 80px;
+  overflow: hidden; }
+
+/* line 89, main.scss */
 .years {
   /*position: absolute;
   top: 0;
@@ -83,40 +88,32 @@ p {
   /*width: 35vw;
   height: 15px;
   overflow: hidden;*/
+  margin-top: -22px;
   width: 32vw;
-  padding: 10% 0;
+  padding: 50px 0;
   white-space: nowrap;
-  overflow: -moz-scrollbars-none !important;
   overflow-y: hidden;
   overflow-x: scroll; }
-  /* line 103, main.scss */
+  /* line 108, main.scss */
   .years li {
     display: inline;
-    padding: 10px 20px;
+    padding: 11px 20px;
+    border: 1px solid transparent;
     cursor: pointer; }
-    /* line 108, main.scss */
-    .years li.active, .years li:hover {
-      color: #AAF0D1; }
-  /* line 112, main.scss */
-  .years::-webkit-scrollbar {
-    display: none; }
+    /* line 113, main.scss */
+    .years li.active {
+      border-color: #fff; }
 
-/* line 117, main.scss */
+/* line 122, main.scss */
 .left_arrow {
   margin-right: 40px; }
-  /* line 119, main.scss */
-  .left_arrow:hover {
-    width: 12px; }
 
-/* line 124, main.scss */
+/* line 129, main.scss */
 .right_arrow {
   margin-left: 40px; }
-  /* line 126, main.scss */
-  .right_arrow:hover {
-    width: 12px; }
 
 /*---------spinner-------*/
-/* line 134, main.scss */
+/* line 139, main.scss */
 .spinner {
   z-index: 99999;
   position: fixed;
@@ -127,19 +124,71 @@ p {
       transform: translate(-50%, -50%); }
 
 /*----------genres----------*/
-/*-----------sort by-----------*/
-/* line 208, main.scss */
-.sortby {
-  width: 25vw;
-  margin: 2% auto 5%;
+/* line 154, main.scss */
+.genres {
+  width: 50vw;
+  margin: 15px auto 0;
   text-align: center; }
-  /* line 212, main.scss */
-  .sortby h2 {
-    font-family: "Sofia Pro", sans-serif;
-    color: #fff;
-    font-size: 14px;
-    padding-bottom: 15px; }
-  /* line 218, main.scss */
+  /* line 158, main.scss */
+  .genres div {
+    position: relative; }
+    /* line 160, main.scss */
+    .genres div .fa {
+      position: absolute;
+      top: 10%;
+      left: 55%;
+      cursor: pointer;
+      color: #edd5d5; }
+      /* line 166, main.scss */
+      .genres div .fa.fa-caret-up {
+        display: none; }
+  /* line 171, main.scss */
+  .genres ul {
+    display: none;
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: scroll; }
+
+/* line 185, main.scss */
+.genres li {
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  margin: 4px 2px;
+  padding: 5px 10px;
+  background-color: #553354;
+  font-family: "Sofia Pro", sans-serif;
+  font-weight: lighter;
+  color: #fff;
+  opacity: 0.8;
+  font-size: 12px; }
+  /* line 198, main.scss */
+  .genres li:hover, .genres li.active:hover {
+    background-color: #96344C; }
+  /* line 201, main.scss */
+  .genres li.active {
+    background-color: #CC6643;
+    opacity: 1; }
+  /* line 205, main.scss */
+  .genres li span {
+    margin-left: 3px; }
+
+/* line 229, main.scss */
+h2 {
+  font-family: "Sofia Pro", sans-serif;
+  font-weight: lighter;
+  color: #edd5d5;
+  font-size: 14px;
+  padding-bottom: 15px; }
+
+/*-----------sort by-----------*/
+/* line 239, main.scss */
+.sortby {
+  position: relative;
+  width: 300px;
+  margin: 20px auto;
+  text-align: center; }
+  /* line 244, main.scss */
   .sortby div {
     display: -webkit-flex;
     -webkit-flex-direction: row;
@@ -151,22 +200,33 @@ p {
     -webkit-flex-direction: row;
         -ms-flex-direction: row;
             flex-direction: row; }
-    /* line 223, main.scss */
+    /* line 249, main.scss */
     .sortby div a {
+      text-transform: uppercase;
       font-family: "Sofia Pro", sans-serif;
+      color: #fff;
       font-weight: lighter;
-      font-size: 16px;
+      padding: 7px 0;
+      font-size: 14px;
       cursor: pointer;
       -webkit-flex: 1 1 auto;
       -webkit-box-flex: 1;
           -ms-flex: 1 1 auto;
-              flex: 1 1 auto; }
-      /* line 230, main.scss */
-      .sortby div a.active, .sortby div a:hover {
-        color: #AAF0D1; }
+              flex: 1 1 auto;
+      -webkit-transition: 0.3s ease-out;
+              transition: 0.3s ease-out; }
+  /* line 269, main.scss */
+  .sortby .underl {
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    width: 33%;
+    border-bottom: 1px solid #fff;
+    -webkit-transition: left 0.35s ease-out;
+            transition: left 0.35s ease-out; }
 
 /*-----------covers------------*/
-/* line 240, main.scss */
+/* line 282, main.scss */
 .card_container {
   float: left;
   width: 25%;
@@ -177,23 +237,23 @@ p {
   -moz-perspective: 600;
   -o-perspective: 600;
   position: relative; }
-  /* line 250, main.scss */
+  /* line 292, main.scss */
   .card_container:hover .card {
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
     -o-transform: rotateY(180deg); }
 
-/* line 258, main.scss */
+/* line 300, main.scss */
 .covers figure img {
   height: 100%;
   width: 100%; }
 
-/* line 263, main.scss */
+/* line 305, main.scss */
 figcaption {
   background-color: #edd5d5; }
 
-/* line 268, main.scss */
+/* line 310, main.scss */
 .card {
   height: 100%;
   position: absolute;
@@ -208,7 +268,7 @@ figcaption {
   -o-transition: all .5s ease-in-out;
   -o-transform-style: preserve-3d;
   width: 100%; }
-  /* line 280, main.scss */
+  /* line 322, main.scss */
   .card .side {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -218,12 +278,12 @@ figcaption {
     position: absolute;
     top: 0;
     width: 100%; }
-  /* line 290, main.scss */
+  /* line 332, main.scss */
   .card .back {
     -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg); }
 
-/* line 295, main.scss */
+/* line 337, main.scss */
 .play_b {
   position: absolute;
   top: 60%;
@@ -232,13 +292,13 @@ figcaption {
   -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%); }
 
-/* line 305, main.scss */
+/* line 347, main.scss */
 .artist, .album {
   max-width: 85%;
   margin: auto;
   color: #272727; }
 
-/* line 311, main.scss */
+/* line 353, main.scss */
 .artist {
   font-family: "Sofia Pro", sans-serif;
   font-weight: bolder;
@@ -246,7 +306,7 @@ figcaption {
   padding-top: 16%
   /*50px*/ }
 
-/* line 319, main.scss */
+/* line 361, main.scss */
 .album {
   font-family: "Baskerville", serif;
   font-weight: lighter;
@@ -255,7 +315,7 @@ figcaption {
   /*15px*/ }
 
 /*--------footer---------*/
-/* line 328, main.scss */
+/* line 370, main.scss */
 footer {
   width: 75vw;
   margin: 30px auto;
@@ -263,126 +323,127 @@ footer {
   color: #fff;
   font-weight: lighter;
   font-size: 10px; }
-  /* line 335, main.scss */
+  /* line 377, main.scss */
   footer small {
     float: left; }
-  /* line 338, main.scss */
+  /* line 380, main.scss */
   footer ul {
     float: right; }
-    /* line 340, main.scss */
+    /* line 382, main.scss */
     footer ul li {
       display: inline-block; }
-      /* line 342, main.scss */
+      /* line 384, main.scss */
       footer ul li:first-child {
         padding-right: 20px; }
 
 /*--------media queries---------*/
 @media (max-width: 1300px) {
-  /* line 352, main.scss */
+  /* line 394, main.scss */
   .card {
     line-height: 1.4; }
 
-  /* line 355, main.scss */
+  /* line 397, main.scss */
   .artist, .album {
     max-width: 90%; } }
 @media (max-width: 1200px) {
-  /* line 361, main.scss */
+  /* line 403, main.scss */
   .card {
     line-height: 1.3; }
 
-  /* line 364, main.scss */
+  /* line 406, main.scss */
   .album {
     font-size: 20px; }
 
-  /* line 367, main.scss */
+  /* line 409, main.scss */
   .play_b {
     top: 65%;
     width: 35px; } }
 @media (max-width: 1020px) {
-  /* line 374, main.scss */
+  /* line 416, main.scss */
   .play_b {
     top: 70%; } }
 @media (max-width: 920px) {
-  /* line 380, main.scss */
+  /* line 422, main.scss */
   header {
     padding-top: 5%; }
 
-  /* line 383, main.scss */
+  /* line 425, main.scss */
   .play_b {
     top: 70%; }
 
-  /* line 386, main.scss */
+  /* line 428, main.scss */
   .artist {
     font-size: 14px; }
 
-  /* line 390, main.scss */
+  /* line 432, main.scss */
   .album {
     font-size: 18px; } }
 @media (max-width: 768px) {
-  /* line 398, main.scss */
-  .genres article:hover {
-    background-color: #CC6643; }
-  /* line 401, main.scss */
-  .genres article.active_genre:hover {
-    background-color: #553354; }
-
-  /* line 406, main.scss */
+  /* line 439, main.scss */
   .years {
     width: 45vw; }
 
-  /* line 410, main.scss */
+  /* line 443, main.scss */
+  .genres {
+    width: 75vw; }
+
+  /* line 447, main.scss */
   .card_container {
     width: 33.3%;
     height: 33.3vw; }
 
-  /* line 415, main.scss */
+  /* line 452, main.scss */
   .arist, .album {
     max-width: 95%; }
 
-  /* line 419, main.scss */
+  /* line 456, main.scss */
   footer {
     width: 85vw;
     text-align: center; }
-    /* line 422, main.scss */
+    /* line 459, main.scss */
     footer small {
       float: none; }
-    /* line 425, main.scss */
+    /* line 462, main.scss */
     footer ul {
       padding: 15px 0;
       float: none; } }
 @media (max-width: 600px) {
-  /* line 433, main.scss */
+  /* line 470, main.scss */
   .play_b {
     top: 75%;
     width: 30px; }
 
-  /* line 437, main.scss */
+  /* line 474, main.scss */
   .artist {
     font-size: 12px; }
 
-  /* line 441, main.scss */
+  /* line 478, main.scss */
   .album {
     font-size: 16px; }
 
-  /* line 445, main.scss */
+  /* line 482, main.scss */
   .play_button {
     width: 25px;
     top: 75%; } }
 @media (max-width: 500px) {
-  /* line 452, main.scss */
+  /* line 489, main.scss */
   .years {
     width: 60vw; } }
 @media (max-width: 420px) {
-  /* line 459, main.scss */
+  /* line 496, main.scss */
   h1 {
     font-size: 30px; }
 
-  /* line 463, main.scss */
+  /* line 500, main.scss */
   .header_underline {
     margin-left: 40vw;
     margin-right: 40vw; }
 
-  /* line 468, main.scss */
+  /* line 505, main.scss */
+  .genres {
+    width: 90vw; }
+
+  /* line 509, main.scss */
   .card_container {
     width: 50%;
     height: 50vw; } }
