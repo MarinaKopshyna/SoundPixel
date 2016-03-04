@@ -1,5 +1,5 @@
 var currYear = 2016;
-var genreChosen = 'hip hop';
+// var genreChosen = '';
 var albumInfo = [];
 var albumIDs = [];
 var albumData = [];
@@ -109,16 +109,12 @@ function getArtistsAlbumFromGenre( artistsArray ) {
 
 					albumCounter++;
 
-					$('.genres .' + chosenGenre + ' .number').text(artistsLength);
-
 					if (albumCounter >= artistsLength) {
 						console.log('we are done');
 						addAlbumCovers();
 					}
 				}
 			});
-
-			console.log(albumObj);
 		})
 		.fail(function(data){
 			console.log('oops');
@@ -439,8 +435,8 @@ $(".fa-caret-up").click(function() {
 });
 
 $(".sortby div a").click(function(){
-   var i = $(this).data('index');
-   $('.underl').css('left', (i * 33 + "%"));
+	var i = $(this).data('index');
+	$('.underl').css('left', (i * 33 + "%"));
 });
 
 $(".main_nav li").click(function(){
@@ -448,15 +444,14 @@ $(".main_nav li").click(function(){
     $(this).addClass("active");
 
 	if($(".year_tab").hasClass("active")){
-       $(".genres").css("display", "none");
-       $(".year_bar").css("display", "block");
+		$(".genres").css("display", "none");
+		$(".year_bar").css("display", "block");
 	} else if ($(".genre_tab").hasClass("active")){
-       $(".year_bar").css("display", "none");
-       $(".genres").css("display", "block");
-       $(".fa-caret-down").css("display", "none");
-       $(".fa-caret-up").css("display", "inline");
-       $('.covers').html('');
-   }
+		$(".year_bar").css("display", "none");
+		$(".genres").css("display", "block");
+		$(".fa-caret-down").css("display", "none");
+		$(".fa-caret-up").css("display", "inline");
+		$('.covers').html('');
 
 		// getAlbumsByGenre(chosenGenre);
 	}
