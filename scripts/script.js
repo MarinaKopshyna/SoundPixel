@@ -365,7 +365,13 @@ $(".left_arrow").click(function(){
 $('.genres article').click(function(){
 	if ($(this).text() !== $('.genres article.active').text()){
 		$('.genres article').removeClass('active');
+		$('.checked').css('display', 'none');
+		$('.box').css('display', 'inline');
+
 		$(this).addClass('active');
+		$(this).children('.box').css('display','none');
+		$(this).children('.checked').css('display', 'inline');
+	
 		var genreChosen = $('.genres article.active p').text();
 
 		$('.covers').html('');
@@ -376,6 +382,29 @@ $('.genres article').click(function(){
 		getAlbumsByGenre(genreChosen);
 	}
 })
+
+// $(".genres article").click(function(){
+   
+//    $(".checked").css("display", "none");
+//    $(".box").css("display", "inline");
+
+//   if($(".genres article").hasClass("active")){
+//       $(this).children(".box").css("display", "none");
+//       $(this).children(".checked").css("display", "inline");
+//     } else{
+//       $(".checked").css("display", "none");
+//       $(".box").css("display", "inline");
+//    }
+
+// });
+
+// if($(".genres article").hasClass("active")){
+//       $(".box").css("display", "none");
+//       $(".checked").css("display", "inline");
+//     } else{
+//       $(".checked").css("display", "none");
+//       $(".box").css("display", "inline");
+//   }
 
 $(".years li").click(function(){
 	if($(this).text() !== $('.years li.active').text()){
@@ -415,7 +444,7 @@ $(document).ready(function(){
 
 //spinner
 $(window).ready(function() {
-    $(".spinner").fadeOut("slow");
+	$(".spinner").fadeOut("slow");
 });
 
 $(".fa-caret-down").click(function() {
@@ -449,19 +478,15 @@ $(".main_nav li").click(function(){
 	} else if ($(".genre_tab").hasClass("active")){
 		$(".year_bar").css("display", "none");
 		$(".genres").css("display", "block");
-		$(".fa-caret-down").css("display", "none");
-		$(".fa-caret-up").css("display", "inline");
+		// $(".fa-caret-down").css("display", "none");
+		// $(".fa-caret-up").css("display", "inline");
 		$('.covers').html('');
 
 		// getAlbumsByGenre(chosenGenre);
 	}
 });
 
-$(".genres article").click(function(){
-   $(this).toggleClass("active");
-   $(this).children(".checked").toggle();
-   $(this).children(".box").toggle();
- });
+
 
 
 
