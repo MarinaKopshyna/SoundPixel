@@ -204,7 +204,7 @@ p {
      } 
      & .container {
       width: 100%;
-      display: none;
+      // display: none;
       // margin: auto;
       // height: 150px;
       // overflow-x: hidden;
@@ -225,13 +225,11 @@ p {
   margin: 4px 2px;
   padding: 0 10px;
   background-color: $purple;
-  opacity: 0.6;
-    &:hover, &.active:hover {
+    // &:hover&.active:hover {
+    //   background-color: $pink;
+    // }
+     &.active,{
       background-color: $pink;
-    }
-     &.active {
-      background-color: $purple;
-      opacity: 1;
      }
     & p {
       display: inline-block;
@@ -255,7 +253,7 @@ p {
       // bottom: 29%;
       // left: 87%;
     }
-    & .box {
+    & .checked {
     display: none;
     }
       // & p {
