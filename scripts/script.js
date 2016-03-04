@@ -49,16 +49,17 @@ function getAlbumsByYear(year){
 
 function getAlbumsByGenre(genre) {
 	albumCounter = 0
+	console.log(genre);
 
 	$.ajax({
-		url: 'https://api.spotify.com/v1/search?q=genre:"hip hop"&type=artist&limit=' + TOTAL_ALBUMS
+		url: 'https://api.spotify.com/v1/search?q=genre:"' + genre + '"&type=artist&limit=' + TOTAL_ALBUMS
 	})
 	.success(function(genreData){
 
 		getArtistsAlbumFromGenre(genreData.artists.items)
 
 		$.ajax({
-			url: 'https://api.spotify.com/v1/search?q=genre:"hip hop"&type=artist&limit=' + TOTAL_ALBUMS + '&offset=50'
+			url: 'https://api.spotify.com/v1/search?q=genre:"' + genre + '"&type=artist&limit=' + TOTAL_ALBUMS + '&offset=50'
 		})
 		.success(function(genreData){
 			getArtistsAlbumFromGenre(genreData.artists.items);
@@ -75,7 +76,7 @@ function getAlbumsByGenre(genre) {
 }
 
 function getArtistsAlbumFromGenre( artistsArray ) {
-	// console.log("getArtistsAlbumFromGenre called");
+	console.log("getArtistsAlbumFromGenre called");
 
 	var artistsLength = artistsArray.length;
 
@@ -107,6 +108,8 @@ function getArtistsAlbumFromGenre( artistsArray ) {
 					albumArray.push(albumObj);
 
 					albumCounter++;
+
+					$('.genres .' + chosenGenre + ' .number').text(artistsLength);
 
 					if (albumCounter >= artistsLength) {
 						console.log('we are done');
@@ -208,7 +211,7 @@ function addAlbumCovers(){
 	// console.log("addAlbumCovers called");
 
 	albumArray.forEach(function(item){
-		console.log(item);
+		// console.log(item);
 		if (!albumArray[item.ID]) {
 			noDupeArray.push(item);
 			albumArray[item.ID] = item;
@@ -363,20 +366,20 @@ $(".left_arrow").click(function(){
 
 //add.remove active class
 
-// $('.genres li').click(function(){
-// 	if $(this).text() !== $('.genres li.active').text()){
-// 		$('.genres li.active').removeClass('active');
-// 		$(this).addClass('active');
-// 		var genreChosen = $('.genres li.active').text();
+$('.genres article').click(function(){
+	if ($(this).text() !== $('.genres article.active').text()){
+		$('.genres article').removeClass('active');
+		$(this).addClass('active');
+		var genreChosen = $('.genres article.active p').text();
 
-// 		$('.covers').html('');
+		$('.covers').html('');
 
-// 		albumArray = [];
-// 		noDupeArray = [];
+		albumArray = [];
+		noDupeArray = [];
 
-// 		getAlbumsByGenre(genreChosen);
-// 	}
-// })
+		getAlbumsByGenre(genreChosen);
+	}
+})
 
 $(".years li").click(function(){
 	if($(this).text() !== $('.years li.active').text()){
@@ -394,7 +397,6 @@ $(".years li").click(function(){
 });
 
 //toggle genre active class
-
 
 $(document).ready(function(){
 	var a = document.querySelector('.years');
@@ -445,19 +447,19 @@ $(".main_nav li").click(function(){
     $(".main_nav li.active").removeClass("active");
     $(this).addClass("active");
 
-    $(".genre_tab").click(function(){
-       $(".fa-caret-up").css("display", "none");
-       $(".fa-caret-down").css("display", "inline");
-      $(".genres .container").css("display", "none");
-    });
-
-    if($(".year_tab").hasClass("active")){
-   $(".genres").css("display", "none");
-   $(".year_bar").css("display", "block");
-   }else if($(".genre_tab").hasClass("active")){
-   $(".year_bar").css("display", "none");
-   $(".genres").css("display", "block");
+	if($(".year_tab").hasClass("active")){
+       $(".genres").css("display", "none");
+       $(".year_bar").css("display", "block");
+	} else if ($(".genre_tab").hasClass("active")){
+       $(".year_bar").css("display", "none");
+       $(".genres").css("display", "block");
+       $(".fa-caret-down").css("display", "none");
+       $(".fa-caret-up").css("display", "inline");
+       $('.covers').html('');
    }
+
+		// getAlbumsByGenre(chosenGenre);
+	}
 });
 
 $(".genres article").click(function(){
