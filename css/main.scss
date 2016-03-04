@@ -43,7 +43,7 @@ a {
 
 header {
   text-align: center;
-  padding-top: 9vh; /*115px*/
+  padding-top: 6vh; /*115px*/
 }
 
 h1 {
@@ -55,7 +55,7 @@ h1 {
 
 .header_underline {
   border-bottom: 3px solid $pale;
-  margin: 3vh 47vw 6vh;
+  margin: 3vh 48vw 8vh;
 }
 
 p {
@@ -65,6 +65,36 @@ p {
   font-size: 14px;
 }
 
+/*-----------main nav-----------*/
+
+.main_nav {
+  width: 300px;
+  margin: 0 auto 25px;
+  text-align: center;
+  font-family: $sofi;
+  font-weight: lighter;
+  font-size: 14px;
+  color: $white;
+    & li{
+      cursor: pointer;
+      display: inline-block;
+      background-color: $orange;
+      opacity: 0.5;
+      width: 44%;
+      padding: 7px 3px;
+      transition: 0.3s ease-out;
+         &.active {
+          opacity: 1;
+         }
+         &:first-child {
+          margin-right: 5px;
+         }
+         &:last-child {
+          margin-left: 5px;
+         }
+    }
+}
+
 /*-----------------year nav-------------*/
 
 .year_bar {
@@ -72,6 +102,7 @@ p {
    color: $white;
    font-family: $sofi;
    font-weight: lighter;
+   text-align: center;
      & img {
        cursor: pointer; 
      }
@@ -152,27 +183,32 @@ p {
 /*----------genres----------*/
 
 .genres {
+  display: none;
   width: 50vw;
-  margin: 15px auto 0;
+  margin: 55px auto 34px;
   text-align: center;
+  cursor: pointer;
      & div {
       position: relative;
+      width: 300px;
+      margin: auto;
         & .fa {
           position: absolute;
           top: 10%;
-          left: 55%;
-          cursor: pointer;
+          left: 60%;
           color: $pale;
            &.fa-caret-up {
             display: none;
            }
         }
      } 
-     & ul {
+     & .container {
+      width: 100%;
       display: none;
-      height: 150px;
-      overflow-x: hidden;
-      overflow-y: scroll;
+      // margin: auto;
+      // height: 150px;
+      // overflow-x: hidden;
+      // overflow-y: scroll;
      }
   // text-align: justify;
   //   &:after {
@@ -182,28 +218,45 @@ p {
   //    }
 }
 
-.genres li {
-  // position: relative;
-  cursor: pointer;
+.genres article {
+  position: relative;
   display: inline-block;
   height: 25px;
   margin: 4px 2px;
-  padding: 5px 10px;
+  padding: 0 10px;
   background-color: $purple;
-  font-family: $sofi;
-  font-weight: lighter;
-  color: $white;
-  opacity: 0.8;
-  font-size: 12px;
+  opacity: 0.6;
     &:hover, &.active:hover {
       background-color: $pink;
     }
      &.active {
-      background-color: $orange;
+      background-color: $purple;
       opacity: 1;
      }
-    & span {
-      margin-left: 3px;
+    & p {
+      display: inline-block;
+      margin-left: 4px;
+      font-family: $sofi;
+      font-weight: lighter;
+      color: $white;
+      opacity: 1;
+      font-size: 10px;
+      text-transform: uppercase;
+      line-height: 25px;
+        &.number {
+          vertical-align: middle;
+        }
+      // line-height: 25px;
+    }
+    & img {
+      display: inline-block;
+      padding-left: 8px;
+      // position: absolute;
+      // bottom: 29%;
+      // left: 87%;
+    }
+    & .box {
+    display: none;
     }
       // & p {
      //  font-size: 12px;
@@ -225,6 +278,7 @@ p {
      //     }
      // }
 }
+
 
 h2 {
            font-family: $sofi;
@@ -391,6 +445,7 @@ footer {
 /*--------media queries---------*/
 
 @media(max-width: 1300px){
+
   .card {
     line-height: 1.4;
   }
@@ -400,6 +455,7 @@ footer {
 }
 
 @media(max-width: 1200px) {
+
   .card { 
     line-height: 1.3;
   }
@@ -413,12 +469,14 @@ footer {
 }
 
 @media(max-width: 1020px) {
+
   .play_b {
     top: 70%;
   }
 }
 
 @media(max-width: 920px) {
+
   header {
     padding-top: 5%;
   }
@@ -436,7 +494,7 @@ footer {
 
 @media(max-width: 768px) {
 
-.years {
+  .years {
     width: 45vw;
   }
   
@@ -467,6 +525,7 @@ footer {
 }
 
 @media(max-width: 600px){
+
   .play_b {
     top: 75%;
     width: 30px;
