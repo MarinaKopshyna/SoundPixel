@@ -188,6 +188,9 @@ p {
   margin: 4px 2px;
   padding: 0 10px;
   background-color: #553354; }
+  /* line 231, main.scss */
+  .genres article.active {
+    background-color: #96344C; }
   /* line 234, main.scss */
   .genres article p {
     display: inline-block;
