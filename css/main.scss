@@ -228,9 +228,9 @@ p {
     // &:hover&.active:hover {
     //   background-color: $pink;
     // }
-     &.active,{
-      background-color: $pink;
-     }
+     // &.active{
+     //  background-color: $pink;
+     // }
     & p {
       display: inline-block;
       margin-left: 4px;
