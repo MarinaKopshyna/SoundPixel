@@ -1,5 +1,4 @@
 var currYear = 2016;
-// var genreChosen = '';
 var albumInfo = [];
 var albumIDs = [];
 var albumData = [];
@@ -82,10 +81,6 @@ function getArtistsAlbumFromGenre( artistsArray ) {
 
 	for (var i = 0; i < artistsLength; i++) {
 
-		// var artistsNameId = [];
-		// artistsNameId.push(artistsArray[i].id);
-		// artistsNameId.push(artistsArray[i].name);
-
 		$.ajax({
 			url: 'https://api.spotify.com/v1/artists/' + artistsArray[i].id + '/albums?&limit=1&album_type=album',
 			artist: artistsArray[i]
@@ -102,7 +97,7 @@ function getArtistsAlbumFromGenre( artistsArray ) {
 			RGBaster.colors(albumObj.colorSample,{
 				paletteSize: 3,
 				success: function(payload){
-					// console.log(albumObj.colorSample);
+					
 					albumObj.color = tinycolor(payload.dominant);
 
 					albumArray.push(albumObj);
@@ -122,17 +117,7 @@ function getArtistsAlbumFromGenre( artistsArray ) {
 	}
 }
 
-		// var album = {};
-		// album.albumArtist = data.artists[0].name,
-		// album.artistId = data.artists[0].id,
-		// album.albumName = data.name,
-		// album.albumCover = data.images[1].url,
-		// album.colorSample = data.images[2].url,
-		// album.albumSample = data.tracks.items[0].preview_url;
-
 function getAlbumInfo( albumsArray ){
-
-	// console.log("getAlbumInfo called");
 
 	for (var i = 0; i < albumsArray.length; i++) {
 
@@ -155,20 +140,6 @@ function getAlbumInfo( albumsArray ){
 
 			albumObj.ID = artistId;
 
-			// $.ajax({
-			// 	// url: 'http://developer.echonest.com/api/v4/artist/profile?id=spotify:artist:' + artistId,
-			// 	// data: {
-			// 	// 	api_key: 'EIFFMMDVJUME3MPUL',
-			// 	// 	bucket: 'genre'
-			// 	// },
-			// })
-			// .success(function(artistData){
-
-				// console.log("adding genres");
-
-				// artistGenres.push(artistData.response.artist.genres);
-				// albumObj.genres = artistData.response.artist.genres;
-
 				RGBaster.colors(data.images[2].url,{
 					paletteSize: 3,
 					success: function(payload){
@@ -189,13 +160,6 @@ function getAlbumInfo( albumsArray ){
 					}
 				});
 
-
-			// })
-			// .fail(function(){
-			// 	console.log('whoops');
-			// });
-
-
 		})
 		.fail(function(){
 			console.log('oops');
@@ -204,10 +168,9 @@ function getAlbumInfo( albumsArray ){
 }
 
 function addAlbumCovers(){
-	// console.log("addAlbumCovers called");
 
 	albumArray.forEach(function(item){
-		// console.log(item);
+		
 		if (!albumArray[item.ID]) {
 			noDupeArray.push(item);
 			albumArray[item.ID] = item;
@@ -223,24 +186,11 @@ function addAlbumCovers(){
 	  	var hsl = noDupeArray[i].color.toHsl();
 	  	var hex = String(noDupeArray[i].color.toHexString()).substring(1, 7);
 	  	var dec = parseInt(hex, 16);
-	  	// var colorName = albumArray[i].color.toName();
 
 	  	if (hsl.l < 0.5) {var c = '#ffffff'; var d = "play_b white"; var e = "play_b_white";}
 	  	else {var c ='#272727'; var d = "play_b dark"; var e = "play_b_dark";}
 
-	 //  	var albumGenres = noDupeArray[i].genres;
-		// // console.log(albumGenres);
-		// var albumGenresStr = '';
-		// // var htmlAlbumGenresStr = '';
-	 //  	albumGenres.forEach(function(genre, j, arr){
-	 //  		// genre.name = genre.name.split(' ').join('-');
-	 //  		albumGenresArray.push(genre.name)
-	 //  		albumGenresStr += genre.name + ' ';
-	 //  	});
-	  	
-
   		var html = '<div class="card_container" data-color="' + dec + '"';
-  		// html += 'data-genres="' + albumGenresStr + '"';
   		html += 'data-artist="' + album.albumArtist + '"';
   		html += 'data-album="' + album.albumName + '">';
   		html += '<div class="card">';
@@ -250,16 +200,8 @@ function addAlbumCovers(){
 	    html += '<h4 class="album" style="color:' + c + '">' + album.albumName + '</h4>';
 	    html += '<a href="' + album.spotifyLink + '""><img class="' + d + '" src="img/' + e + '.svg" alt="playb"></a>'
 	    html += '</figcaption></div></div>';
-
-		// var numGenres = noDupeArray[i].genres.length;
-		// for (var j = 0; j < numGenres; j++){
-		// 	var genre = numGenres.genres[j].name
-		// 	return ;
-		// }
 	
 		$('.covers').append(html);
-
-		// $('.card_container').attr('data-genres', noDupeArray[i].genres);
 
 	if($grid){$grid.isotope('destroy');}	
 	$grid = $('.covers').isotope({
@@ -270,7 +212,7 @@ function addAlbumCovers(){
 			artist: '[data-artist]',
 			album: '[data-album]'
 		}
-		// filter: 'data-genres'
+		
 	});
 	$grid.isotope({ sortBy: "color" });
 
@@ -285,82 +227,17 @@ function addAlbumCovers(){
 	}
 }
 
-// $(".sortby a").click(function(){
-//    $(this).toggleClass("active");
-// });
-
-// function filterGenres(){
-// 	albumGenresArray.sort();
-// 	for (i = 1; i < albumGenresArray.length; i++) {
-// 		var genre = albumGenresArray[i];
-// 		var numGenre = albumGenresArray.lastIndexOf(genre) - albumGenresArray.indexOf(genre) + 1;
-// 		console.log(genre + ' = ' + numGenre);
-
-// 		var genreHtml = '<li class="active">' + genre + '';
-// 		genreHtml += '<span class="number"> (' + numGenre + ')</span> ';
-// 		genreHtml += '<img src="img/close.svg" alt="close"></li>';
-// 		if (albumGenresArray[i] != albumGenresArray[i-1]) {
-// 			$('.genres ul').append(genreHtml);
-// 		}
-// 	}
-// 	var filters = [];
-// 	$(".genres ul li").click(function(){
-// 		// $(this).toggleClass('active');
-		
-// 		var filtersLength = filters.length
-// 		var $target = $(event.currentTarget);
-// 		$target.toggleClass('active');
-
-// 		var isActive = $target.hasClass('active');
-// 		var thisGenre = ($target.text()).split(' ')[0].toLowerCase();
-// 		var thisGenreString = '';
-
-// 		// if (isActive) {
-// 		// 	// remove this genre
-
-// 		// 	filters.push(thisGenre);
-// 		// } else {
-// 		// 	index = filters.indexOf(thisGenre);
-// 		// 	lengthGenreString = thisGenre.toString.length;
-// 		// 	filters.splice(index, 1);
-// 		// }
-
-// 		// filters.push($('.genres ul li[hasClass="active"').text().toLowerCase());
-
-// 		// filtersStr = filters.toString();
-// 		// filtersStr.replace(',', '"]):not([data-genres*="');
-
-// 		$grid.isotope({ filter: '*:not([data-genres*="' + thisGenre + '"]):not([data-genres*="deep-ccm"])'});
-		
-// 		// function removeGenre(thisGenre) {
-// 		// 	if (filters.indexOf(thisGenre) == -1) {
-// 		// 		filters.push(thisGenre);
-// 		// 	}
-// 		// }
-
-// 		// function addGenre(thisGenre) {
-// 		// 	var index = filters.indexOf(thisGenre);
-// 		// 	if (index != -1) {
-// 		// 		filters.splice(index,1);
-// 		// 	}
-// 		// }
-// 	});
-// }
-
 $(".right_arrow").click(function(){
 	var goalX = $(".years").scrollLeft() + 205;
-	//console.log("goalX: " + goalX);
+	
     $(".years").animate({scrollLeft: goalX}, 800);
 });
 
 $(".left_arrow").click(function(){
 	var goalX = $(".years").scrollLeft() - 205;
-	//console.log("goalX: " + goalX);
+	
    $(".years").animate({scrollLeft: goalX}, 800);
 });
-
-
-//add.remove active class
 
 $('.genres article').click(function(){
 	if ($(this).text() !== $('.genres article.active').text()){
@@ -383,29 +260,6 @@ $('.genres article').click(function(){
 	}
 })
 
-// $(".genres article").click(function(){
-   
-//    $(".checked").css("display", "none");
-//    $(".box").css("display", "inline");
-
-//   if($(".genres article").hasClass("active")){
-//       $(this).children(".box").css("display", "none");
-//       $(this).children(".checked").css("display", "inline");
-//     } else{
-//       $(".checked").css("display", "none");
-//       $(".box").css("display", "inline");
-//    }
-
-// });
-
-// if($(".genres article").hasClass("active")){
-//       $(".box").css("display", "none");
-//       $(".checked").css("display", "inline");
-//     } else{
-//       $(".checked").css("display", "none");
-//       $(".box").css("display", "inline");
-//   }
-
 $(".years li").click(function(){
 	if($(this).text() !== $('.years li.active').text()){
 	    $(".years li.active").removeClass("active");
@@ -416,19 +270,16 @@ $(".years li").click(function(){
 
 	    albumArray = [];
 	    noDupeArray = [];
-	    // $grid = [];
+
 	    getAlbumsByYear(year);
 	}
 });
-
-//toggle genre active class
 
 $(document).ready(function(){
 	var a = document.querySelector('.years');
 	$('.years').scrollLeft(a.scrollWidth);
 
 	getAlbumsByYear(currYear);
-	// getAlbumsByGenre(genreChosen);
 
 	$('.years').scroll(function(e){
 		$('.left_arrow, .right_arrow').css("visibility", "visible");
@@ -442,7 +293,6 @@ $(document).ready(function(){
 
 });
 
-//spinner
 $(window).ready(function() {
 	$(".spinner").fadeOut("slow");
 });
@@ -478,20 +328,7 @@ $(".main_nav li").click(function(){
 	} else if ($(".genre_tab").hasClass("active")){
 		$(".year_bar").css("display", "none");
 		$(".genres").css("display", "block");
-		// $(".fa-caret-down").css("display", "none");
-		// $(".fa-caret-up").css("display", "inline");
 		$('.covers').html('');
-
-		// getAlbumsByGenre(chosenGenre);
+		
 	}
 });
-
-
-
-
-
-
-
-
-
-
